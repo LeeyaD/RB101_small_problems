@@ -13,7 +13,6 @@
 
 # EXAMPLES / TEST CASES
 # repeat('Hi', 3)
-# repeat('Repeat after me!', 10)
 # repeat(' ', 3)
 # repeat('Hello', -5)
 
@@ -39,9 +38,11 @@ loop do
   puts "How many times would you like to see it?"
   number = gets.chomp.to_i
 
-  if number > 0
+  if number > 0 && string.strip.length > 0
     repeat(string, number)
     break
+  elsif string.strip.length == 0
+    puts "You must enter a word or sentence."
   else 
     puts "You must choose a positive number."
   end
