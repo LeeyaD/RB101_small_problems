@@ -5,10 +5,10 @@
 #  -an array of strings
 # Output
 #  -a hash where...
-#   -keys represent the element in the given array
-#   -values represent the number of occurrences of the element in the given array
+#   -keys are the element from the given array
+#   -values are the number of times the element appeared in the given array
 # Rule
-# -elements are case-sensitive, suv != SUV
+# -elements are case-sensitive, i.e. suv != SUV
 
 # EXAMPLES / TEST CASES
 vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck','motorcycle', 'motorcycle', 'car', 'truck']
@@ -17,35 +17,36 @@ cars = ['car', 'car', 'CAR', 'CAR', 'CaR', 'CAr']
 #=> {car => 2, CAR => 2, CaR => 1, CAr => 1}
 
 # DATA STRUCTURE
-# -array b/c we want to walk through the data as we collect it
-# -hash to create and output a look-up table
+# -array b/c we want to walk through the data as we collect from it
+# -hash to create and output a look-up table {element: # of occurrences}
 
 # ALGORITHM
-# -take in argument, 'vehicles' represented by an array of elements
-# -initialize an empty hash called 'frequency' at the top of the method
-# -using a loop iterate through 'vehicles'
-#  -if element doesn't exist in 'frequency' hash as a key; we'll use the bracket equals ([]=) method to 
-#   add it as a key and assign it a value of 1
-#  -if element already exists as a key in 'frequency' hash; we'll use bracket equals ([]=) method to 
-#   increase that key's value by 1
-#  -in both cases, the current element in iteration will be removed from the array with #delete()
-#  -loop will stop once array.empty? evaluates to true
-# -output 'frequency' hash
+#  START
+#    Given 'vehicles' array
+#  SET 'frequency' = {}
+#
+#  Iterate through 'vehicles' array w/ #each
+#  IF element isn't in 'frequency' hash as a key
+#    Use the bracket equals ([]=) method to add element to hash and give it a value vehicles
+#  ELSE (element is already a key)
+#    Use bracket equals ([]=) method to increase key's value by 1
+#  END
+#    Remove element from array with Array#shift
+#  END
+#  PRINT 'frequency' hash
+#  END
+
 require 'Pry'
 def count_occurrences(vehicles)
   frequency = {}
-  until vehicles.empty?
-    vehicles.map do |vehicle|
-      binding.pry
+    vehicles.each do |vehicle|
+      # binding.pry
       if frequency[vehicle].nil?
-        frequency[vehicle] = 1
-      else 
-        frequency[vehicle] += 1
+        frequency[vehicle] = vehicles.count(vehicle)
       end
-      vehicles.shift
     end
-  end
   puts frequency
 end
 
 count_occurrences(vehicles)
+count_occurrences(cars)
