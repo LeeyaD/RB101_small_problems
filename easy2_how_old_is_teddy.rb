@@ -16,11 +16,11 @@
 
 # ALGORITHM
 # - generate a random number between 20 to 200
-require 'Pry'
+
 def teddys_age(name="Teddy")
   puts "#{name} is #{(20...200).to_a.sample} years old!"
 end
-# binding.pry
+
 puts "Before we guess your age, what is your name?"
 name = gets.chomp
 
