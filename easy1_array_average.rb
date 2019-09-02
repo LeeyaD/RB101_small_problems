@@ -1,4 +1,4 @@
-# UNDERSTAND THE PROBLEM
+# UNDERSTAND THE PROBLEMS
 #  Input
 #   -an array of numbers
 #  Output
