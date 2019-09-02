@@ -36,7 +36,7 @@ def greeting(name)
 end
 
 puts "What's your name? "
-name = gets.chomp
+name = gets.chomp!
 puts greeting(name)
 
 puts greeting("Leeya") == "Hello Leeya."
