@@ -53,34 +53,23 @@ end
 def computation(compute, number)
   range = (1..number.to_i).to_a
   case compute
-  when 'product'
-    product(range)
-  when 'sum'
-    sum(range)
+  when 'p'
+    [product(range), 'product']
+  when 's'
+    [sum(range), 'sum']
   end
 end
 
 def product(range)
-  num = 1
-  range.map { |i| num *= i }
-  num
+  range.inject { |org, i| org *= i }
 end
 
 def sum(range)
-  num = 0
-  range.map { |i| num += i }
-  num
+  range.inject { |org, i| org += i }
 end
 
 number = rec_number
 
-compute = case sum_or_product
-          when 'p'
-            'product'
-          else
-            'sum'
-          end
+total = computation(sum_or_product, number)
 
-total = computation(compute, number)
-
-puts "The #{compute} of the integers between 1 and #{number} is #{total}."
+puts "The #{total[1]} of the integers between 1 and #{number} is #{total[0]}."
