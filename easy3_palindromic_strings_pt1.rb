@@ -16,7 +16,7 @@
 # Input: string
 # Rules as data: an array b/c we want separate the string into individual characters
 
-# ALGORITHM
+# ALGORITHM NO NEED TO SEPARATE STRING!
 # Determine is the given string is a palindrome (punctuation and all)
 # SUBPROCESS "separate string into individual characters"
 # - call #split on input => NEW_array of characters
@@ -28,7 +28,7 @@
 # otherwise false
 
 def palindrome?(string)
-  true if string.split.reverse == string.split
+  string.reverse == string
 end
 
 puts palindrome?('madam') == true
