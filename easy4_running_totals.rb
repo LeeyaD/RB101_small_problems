@@ -8,24 +8,32 @@
 # - New Array's elements but be a running total of original's elements
 
 # EXAMPLES / TEST CASES
-running_total([2, 5, 13]) == [2, 7, 20]
-running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
-running_total([3]) == [3]
-running_total([]) == []
+# See below
 # If orig. array is empty, a new empty array is returned
 
 
 # DATA STRUCTURE
-# Input: 
-# Rules as data: 
+# Input: Array of numbers
+# Rules as data: logic/code
 
 # ALGORITHM
-# - 
+# - Create a new array w/ each element a running total from original array
+# - Use #map to create a new array w/ transformed data from original
+#  - **Outside of #map method, iniitalize 'sum' variable to equal nil
+#  - iterate over original array, #map calling the current element 'current_value'
+#  - reassign 'sum' to += current_value and call 'sum' on last line of block
+
 
 # CODE
+def running_total(array)
+  sum = 0
+  array.map! do |current_value|
+    sum += current_value
+    sum
+  end
+end
 
-
-running_total([2, 5, 13]) == [2, 7, 20]
-running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
-running_total([3]) == [3]
-running_total([]) == []
+puts running_total([2, 5, 13]) == [2, 7, 20]
+puts running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
+puts running_total([3]) == [3]
+puts running_total([]) == []
