@@ -73,7 +73,7 @@ def hexadecimal_to_integer(string)
       DIGIT[char.upcase]
     end
   end
-  
+
   value = 0
   digits.each { |digit| value = 16 * value + digit }
   value
