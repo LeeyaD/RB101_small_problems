@@ -57,13 +57,9 @@
 
 
 #DATA STRUCTURE
-#Input
-# - number
-#Rules rep as data:
-# - as data or logic/code?
+#
 
 #ALGORITHM
-# - century number = (year -1) / 100
-# - century string = center number to string, then "apply suffix rules" 
+#
 
 #CODE
