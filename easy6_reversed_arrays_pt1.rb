@@ -26,7 +26,7 @@
 
 # CODE
 
-def reverse!(list)
+def reverse(list)
   copy = list[0, list.size]
   
   list.map! do |e|
