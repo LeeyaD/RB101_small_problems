@@ -18,11 +18,20 @@
 # join array back together w/ a space btwn each element using Aray#join(" ")
 
 # CODE
+require 'pry'
+# def word_cap(string)
+#   string.split.map(&:capitalize).join(" ")
+# end
 
-def word_cap(string)
-  string.split.map(&:capitalize).join(" ")
+def word_cap(string) #without #capitalize method, solution 1
+  str = string.split.map do |word|
+    word.gsub!(word[0], word[0].upcase)
+    word.gsub(word[1..-1], word[1..-1].downcase)
+  end
+
+  str.join(" ")
 end
 
-# puts word_cap('four score and seven') == 'Four Score And Seven'
-# puts word_cap('the javaScript language') == 'The Javascript Language'
+puts word_cap('four score and seven') == 'Four Score And Seven'
+puts word_cap('the javaScript language') == 'The Javascript Language'
 puts word_cap('this is a "quoted" word') == 'This Is A "quoted" Word'
