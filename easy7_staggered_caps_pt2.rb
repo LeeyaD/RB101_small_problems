@@ -20,7 +20,7 @@ require 'pry'
 def staggered_case(string)
   staggered_caps = ""
   needs_upper = true
-  
+
   string.chars.each do |char|
     if char == " " || char =~ /[^A-Za-z]/
       staggered_caps << char
@@ -36,6 +36,32 @@ def staggered_case(string)
   staggered_caps
 end
 
-puts staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
+# puts staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
+# puts staggered_case('ALL CAPS') == 'AlL cApS'
+# puts staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 nUmBeRs'
+
+
+# FURTHER EXPLORATION - caller can determine whether non-alphabetic characters 
+# should be counted when determining the upper/lowercase state
+def staggered_case(string, non_alpha=nil)
+  result = ''
+  need_upper = true
+  string.chars.each do |char|
+    if char =~ /[a-z]/i
+      if need_upper
+        result += char.upcase
+      else
+        result += char.downcase
+      end
+      need_upper = !need_upper
+    else
+      result += char
+      non_alpha ? need_upper = !need_upper : next
+    end
+  end
+  result
+end
+
+puts staggered_case('I Love Launch School!', "non_alpha") == 'I lOvE lAuNcH sChOoL!'
 puts staggered_case('ALL CAPS') == 'AlL cApS'
-puts staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 nUmBeRs'
+puts staggered_case('ignore 77 the 444 numbers', "non") == 'IgNoRe 77 ThE 444 nUmBeRs'
