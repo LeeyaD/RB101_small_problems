@@ -38,3 +38,23 @@ p rotate_array(['a']) == ['a']
 p x = [1, 2, 3, 4]
 p rotate_array(x) == [2, 3, 4, 1]   # => true
 p x == [1, 2, 3, 4]                 # => true
+
+# FURTHER EXPLORATION
+# rotate strings & numbers
+
+def rotate_strings(string)
+  rotate_array(string.chars).join
+end
+
+p rotate_strings('apple') == 'pplea'
+p rotate_strings('ba') == 'ab'
+p rotate_strings('p') == 'p'
+
+
+def rotate_numbers(num)
+  rotate_array(num.to_s.chars).join.to_i
+end
+
+p rotate_numbers(12345) == 23451
+p rotate_numbers(23) == 32
+p rotate_numbers(5) == 5
