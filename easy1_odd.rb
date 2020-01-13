@@ -54,4 +54,3 @@ def is_odd?(number)
   abs_value = number.abs
   abs_value.remainder(2) != 0
 end
-

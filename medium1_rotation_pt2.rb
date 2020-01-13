@@ -1,3 +1,5 @@
+require 'pry'
+require 'pry-byebug'
 # Write a method that can rotate the last n digits of a number. 
 
 # Note that rotating just 1 digit results in the original number being returned.
@@ -41,14 +43,20 @@ def rotate_array(array)
   array[1..-1] << array[0]
 end
 
-# FEEDBACK
-# 1. Read example cases right after problem rather than working thru whole PEDAC
+def rotate_numbers(num)
+  rotate_array(num.to_s.chars).join.to_i
+end
 
-# For example:
+def rotate_rightmost_digits(digits, num_of_digits)
+  string_digits = digits.to_s
+  to_rotate = string_digits.slice!(-num_of_digits, num_of_digits)
+  rotated_digits = rotate_array(to_rotate.chars)
+  (string_digits + rotated_digits.join).to_i
+end
 
-rotate_rightmost_digits(735291, 1) == 735291
-rotate_rightmost_digits(735291, 2) == 735219
-rotate_rightmost_digits(735291, 3) == 735912
-rotate_rightmost_digits(735291, 4) == 732915
-rotate_rightmost_digits(735291, 5) == 752913
-rotate_rightmost_digits(735291, 6) == 352917
+p rotate_rightmost_digits(735291, 1) == 735291
+p rotate_rightmost_digits(735291, 2) == 735219
+p rotate_rightmost_digits(735291, 3) == 735912
+p rotate_rightmost_digits(735291, 4) == 732915
+p rotate_rightmost_digits(735291, 5) == 752913
+p rotate_rightmost_digits(735291, 6) == 352917
