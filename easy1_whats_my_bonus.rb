@@ -23,12 +23,16 @@
 #   - SUBPROCESS: Bonus is half the given salar
 # - if boolean is false, bonus is 0
 
-def calculate_bonus(num, boolean)
-  if boolean == true
-    num / 2
-  else
-    0
-  end
+# def calculate_bonus(num, boolean)
+#   if boolean == true
+#     num / 2
+#   else
+#     0
+#   end
+# end
+
+def calculate_bonus(salary, bonus)
+  bonus ? salary / 2 : 0
 end
 
 puts calculate_bonus(2800, true) == 1400

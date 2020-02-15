@@ -47,11 +47,11 @@ def rotate_numbers(num)
   rotate_array(num.to_s.chars).join.to_i
 end
 
-def rotate_rightmost_digits(digits, num_of_digits)
-  string_digits = digits.to_s
-  to_rotate = string_digits.slice!(-num_of_digits, num_of_digits)
-  rotated_digits = rotate_array(to_rotate.chars)
-  (string_digits + rotated_digits.join).to_i
+def rotate_rightmost_digits(number, n)
+  str_num = number.to_s
+  to_rotate = str_num.slice!(-n..-1)
+  rotated_num = rotate_array(to_rotate.chars)
+  (str_num + rotated_num.join).to_i
 end
 
 p rotate_rightmost_digits(735291, 1) == 735291
