@@ -41,39 +41,28 @@
 require 'pry'
 require 'pry-byebug'
 
-def round_one(array)
-  array.map { |light| "|"}
-end
-
-def find_on_lights(array)
-  on_lights = []
-
-  array.each_with_index do |light, idx| 
-    on_lights << idx + 1 if light == "|"
-  end
-  on_lights
-end
-
-def lights(switches)
-  lights = Array.new(switches, "O")
-  lights = round_one(lights)
-
-  lights.each_with_index do |light, idx|
-    next if idx == 0
-    lights.each do |light|
-      binding.pry
-      if idx % idx == 0 && (lights[idx] == "|")
-        lights[idx] = "O"
-      elsif idx % idx == 0 && (lights[idx] == "O")
-        lights[idx] = "|"
+def lights(n) # 5
+  lights = Array.new(n, true)
+  round = 2
+  output = []
+  loop do
+    break if round > n
+    
+    (round..n).each do |switch|
+      idx = switch - 1
+      if switch % round == 0
+        lights[idx] ? (lights[idx] = false) : (lights[idx] = true)
       end
     end
+
+    round += 1 
   end
   
-  find_on_lights(lights)
+  lights.each_with_index { |light, idx| output << idx + 1 if light == true } 
+  output
 end
 
-#p lights(3) == [1]
-p lights(5) #== [1, 4]
-# lights(10) == [1, 4, 9]
-# lights(15)
+p lights(3) == [1]
+p lights(5) == [1, 4]
+p lights(10) == [1, 4, 9]
+p lights(1000) == [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961]
